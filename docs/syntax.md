@@ -41,3 +41,10 @@ get 'controller_name/api'
 - Controller test - Chapter 3
 - Model test - Chapter 6
 - Integration test - Chapter 7
+
+## Rails console
+```bash
+rails console
+Loading development environment (Rails 7.0.5)
+irb(main):001:0>
+```
