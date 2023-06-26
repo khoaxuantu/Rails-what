@@ -64,5 +64,3 @@ class NameController < ApplicationController
 
 end
 ```
-### An user class
-
