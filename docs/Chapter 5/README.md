@@ -67,13 +67,6 @@ Sprockets to include the proper files
 ```erb
 <%= link_to "About", about_path %>
 ```
-If we have `about` in controller, we will have named route as `about_path`
-```rb
-class StaticPagesController < ApplicationController
-    def about
-    end
-end
-```
 - `name_path` -> `/name`
 - `name_url` -> `https://example.com/name`
 ### Rails routes
@@ -90,4 +83,14 @@ get "/home", to: "static_pages#help"
 ### Usert controller
 ```bash
 rails generate controller Users new
+```
+### Signup URL
+```rb
+get '/signup', to: 'users#new'
+```
+At `app/views/users/new.html.erb`
+```erb
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+<p>This will be a signup page for new users.</p>
 ```

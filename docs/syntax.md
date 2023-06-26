@@ -48,3 +48,24 @@ rails console
 Loading development environment (Rails 7.0.5)
 irb(main):001:0>
 ```
+
+### html.erb tag
+- `stylesheet_link_tag`
+```erb
+ <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+ ```
+- `link_to`
+```erb
+<li><%= link_to "Home", '#' %></li>
+<li><%= link_to "Help", '#' %></li>
+<li><%= link_to "Log in", '#' %></li>
+```
+- `image_tag`
+```erb
+image_tag("rails.svg", alt: "Rails logo", width: "200")
+```
+- `render`
+```erb
+<%= render 'layouts/shim' %>
+```
+It will look for `app/views/layouts/_shim.html.erb`
