@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page
       reset_session
       log_in user
+      remember user
       redirect_to user
     else
       # Return error
@@ -17,7 +18,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    # We need to check an user logged in first. In case users are logging in multiple
+    # browsers, if they log out in 1 browser then the app in other browsers
+    # should not call log_out
+    log_out if logged_in?
     redirect_to root_url, status: :see_other
   end
 end
