@@ -2,7 +2,7 @@
 
 ## Remember me
 ### Remember token and digest
-> The previous chapter's session disappears when the user closes their browser
+> The previous chapter's session disappears when the users close their browser
 
 We'll take the first step toward persistent sessions by generating a
 *remember token* appropriate for creating permanent cookies using the
@@ -40,7 +40,7 @@ need to create the fixture password using the same method.
 ```rb
 def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ?
-      BCrypt::Engine::MIN_COST : BCrypt::Engine.const
+      BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 
     BCrypt::Password.create(string, cost: cost)
 end
