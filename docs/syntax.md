@@ -23,18 +23,29 @@ rails destroy controller StaticPages home help
 rails generate model User name:string email:string
 rails destroy model User
 ```
-For db migration:
+## Db migration:
 ```bash
 rails db:migrate
 
 rails db:rollback
 rails db:migrate VERSION=0
+
+rails db:migrate:reset
 ```
 ## Routing
 ```rb
 root "controller_name#action_name"
 
 get 'controller_name/api'
+
+get '/name', to: 'controller#action'
+
+resource :controller
+resources :controller
+```
+```
+redirect_to name_url
+redirect_to dynamic_url(:dynamicParams)
 ```
 
 ## Testing
@@ -69,6 +80,12 @@ image_tag("rails.svg", alt: "Rails logo", width: "200")
 <%= render 'layouts/shim' %>
 ```
 It will look for `app/views/layouts/_shim.html.erb`
+
+- `form_with`
+```erb
+<%= form_with(model: @user) do |f| %>
+<% end %>
+```
 
 ## Model handler (interact with database)
 Let's say we have a model `User`. The syntax below will be transformed
@@ -117,3 +134,5 @@ Console
 (rdbg) @user.name
 ```
 
+## Form
+- Chapter 7

@@ -85,3 +85,78 @@ Add a sizebar to the user `show` view
     </aside>
 </div>
 ```
+
+## Signup form
+### Using `form_with`
+```erb
+<%= form_with(model: @user) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_comfirmation, "Confirmation" %>
+    <%= f.password_field :password_comfirmation %>
+
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+```
+### Get parameters from form
+```rb
+def create
+    @user = User.new(params[:users])
+
+    if @user.save
+      # Handle a successful save
+    else
+      render 'new', status: :unprocessable_entity
+    end
+end
+```
+```rb
+# params[:users]
+"user" => { "name" => "Foo Bar",
+            "email" => "foo@invalid",
+            "password" => "[FILTERED]",
+            "password_confirmation" => "[FILTERED]"
+           }
+```
+### Strong parameters
+Permits some parameters instead of all
+```rb
+params.require(:user).permit(:name, :email, :password, :password_confirmation)
+```
+### Signup error messages
+```rb
+@user.errors.any?
+@user.errors.count
+@user.errors.empty?
+@user.errors.full_messages
+```
+### The finished signup form
+At user `create` action
+```rb
+if @user.save
+    redirect_to @user
+    # or redirect_to user_url(user)
+else
+    ...
+end
+```
+### Flash messages
+In controller
+```rb
+flash[:type] = "Message"
+```
+In html.erb
+```erb
+<% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+        <%= message %>
+    </div>
+<% end %>
+```
