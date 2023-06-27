@@ -136,3 +136,10 @@ Console
 
 ## Form
 - Chapter 7
+
+## Session
+```rb
+session[:user_id]
+
+reset_session
+```
