@@ -9,9 +9,9 @@ document.addEventListener("turbo:load", function() {
     });
 
     let account = document.querySelector("#account");
-    account.addEventListener("click", function(event) {
-    event.preventDefault();
-    let menu = document.querySelector("#dropdown-menu");
-        menu.classList.toggle("active");
+    if (account) account.addEventListener("click", function(event) {
+        event.preventDefault();
+        let menu = document.querySelector("#dropdown-menu");
+            menu.classList.toggle("active");
     });
 });
