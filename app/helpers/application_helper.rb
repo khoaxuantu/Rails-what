@@ -9,5 +9,9 @@ module ApplicationHelper
       "#{pageTitle} | #{baseTitle}"
     end
   end
-  
+
+  def submit_text(text='Submit')
+    return text
+  end
+
 end
