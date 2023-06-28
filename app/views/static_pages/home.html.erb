@@ -11,12 +11,7 @@
         sample application.
 
     </h2>
-
-    <% if logged_in? %>
-      <h3> Logged in as <%= @user.name %> </h3>
-    <% else %>
-        <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary me-2" %>
-    <% end %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary me-2" %>
 
 </div>
 <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"), "https://rubyonrails.org/", class: "ms-2" %>

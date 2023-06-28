@@ -23,29 +23,18 @@ rails destroy controller StaticPages home help
 rails generate model User name:string email:string
 rails destroy model User
 ```
-## Db migration:
+For db migration:
 ```bash
 rails db:migrate
 
 rails db:rollback
 rails db:migrate VERSION=0
-
-rails db:migrate:reset
 ```
 ## Routing
 ```rb
 root "controller_name#action_name"
 
 get 'controller_name/api'
-
-get '/name', to: 'controller#action'
-
-resource :controller
-resources :controller
-```
-```
-redirect_to name_url
-redirect_to dynamic_url(:dynamicParams)
 ```
 
 ## Testing
@@ -60,7 +49,7 @@ Loading development environment (Rails 7.0.5)
 irb(main):001:0>
 ```
 
-## html.erb tag
+### html.erb tag
 - `stylesheet_link_tag`
 ```erb
  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -81,13 +70,7 @@ image_tag("rails.svg", alt: "Rails logo", width: "200")
 ```
 It will look for `app/views/layouts/_shim.html.erb`
 
-- `form_with`
-```erb
-<%= form_with(model: @user) do |f| %>
-<% end %>
-```
-
-## Model handler (interact with database)
+### Model handler (interact with database)
 Let's say we have a model `User`. The syntax below will be transformed
 to SQL queries (like Django).
 ```rb
@@ -111,37 +94,6 @@ user.name = "New name"
 user.save
 
 user.update_attribute(:email, "new@email.com")
-
-# Count
-User.count
-```
-## Debug at `html.erb`
-```erb
- <%= debug(params) if Rails.env.development? %>
-```
-
-## Debug at Rails server console
-Controller code
-```rb
-...code
-debugger
-...code
-```
-Console
-```console
-(rdbg)
-(rdbg) @user
-(rdbg) @user.name
-```
-
-## Form
-- Chapter 7
-
-## Session
-```rb
-session[:user_id]
-
-reset_session
 ```
 
 ## Rails Internationalization (I18n) API
