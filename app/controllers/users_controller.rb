@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: [:edit, :update]
+  before_action :login_required, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
+
+  def index
+    @users = User.all 
+  end
 
   def new
     @user = User.new
