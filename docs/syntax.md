@@ -70,6 +70,32 @@ image_tag("rails.svg", alt: "Rails logo", width: "200")
 ```
 It will look for `app/views/layouts/_shim.html.erb`
 
+### Model handler (interact with database)
+Let's say we have a model `User`. The syntax below will be transformed
+to SQL queries (like Django).
+```rb
+# Insert
+user = User.new(...)
+user.save
+
+user1 = User.create(...)
+
+user.valid?
+user1.valid?
+
+# Query
+User.find(id)
+User.find_by(valid_properties)
+User.first
+User.all # to a list []
+
+# Update
+user.name = "New name"
+user.save
+
+user.update_attribute(:email, "new@email.com")
+```
+
 ## Rails Internationalization (I18n) API
 <details>
 
