@@ -21,8 +21,10 @@ class User < ApplicationRecord
     allow_nil: true
   )
 
+  class << self
+
   # Returns the hash digest of the given string
-  def User.digest(string)
+  def digest(string)
     cost = ActiveModel::SecurePassword.min_cost ?
       BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 
@@ -30,7 +32,7 @@ class User < ApplicationRecord
   end
 
   # Returns a random token
-  def self.new_token
+  def new_token
     SecureRandom.urlsafe_base64
   end
 

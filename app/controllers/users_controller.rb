@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :login_required, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
+  before_action :get_user_by_id, only: [:show, :edit, :update]
 
   def index
-    @users = User.all 
+    @users = User.all
   end
 
   def new
@@ -11,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def create
@@ -29,11 +29,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       # Handle a successful update
       flash[:success] = "Profile updated"
@@ -58,6 +56,10 @@ class UsersController < ApplicationController
   def correct_user
     redirect_to(root_url, status: :bad_request) unless
       current_user?(params[:id])
+  end
+
+  def get_user_by_id
+    @user = User.find_by(id: params[:id])
   end
 
   private :user_params
