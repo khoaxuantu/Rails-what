@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: [:index, :edit, :update]
+  before_action :login_required, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :get_user_by_id, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @pagy, @users = pagy(User.all)
   end
 
   def new
@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     else
       render 'edit', status: :bad_request
     end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   def user_params

@@ -31,6 +31,8 @@ rails db:rollback
 rails db:migrate VERSION=0
 
 rails db:migrate:reset
+
+rails db:seed
 ```
 ## Routing
 ```rb
@@ -134,6 +136,9 @@ Console
 (rdbg) @user.name
 ```
 
+## Rails HTTP Status Code
+[Reference](http://www.railsstatuscodes.com/)
+
 ## Form
 - Chapter 7
 
@@ -183,3 +188,31 @@ This means, that in the :en locale, the key hello will map to the Hello world st
 
 
 </details>
+
+## Caching
+- By default, caching is only enabled in your production environment. You can play
+around with caching locally by running `rails dev:cache`, or by setting
+`config.action_controller.perform_caching` to `true` in `config/environments/development.rb`
+
+`Fragment caching`\
+It allows a fragment of view logic to be wrapped in a cache block and served out of
+the cache store when the next req comes in.
+```erb
+<% @products.each do |product| %>
+  <% cache product do %>
+    <%= render product %>
+  <% end %>
+<% end %>
+```
+When your application receives its first request to this page, Rails will write a new
+cache entry with a unique key
+```
+views/products/index:bea67108094918eeba42cd4a6e786901/products/1
+```
+If you want to cach a fragment under certain conditions
+```erb
+<% cache_if admin?, product do %>
+  <%= render product %>
+<% end %>
+```
+[More ref](https://guides.rubyonrails.org/caching_with_rails.html)
