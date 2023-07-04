@@ -34,3 +34,12 @@ en:
   baseTitle: "Ruby on Rails Tutorial Sample App"
   form:
     invalid_authenticate_msg: 'Invalid email/password combination'
+  user_mailer:
+    subject:
+      account_activation: "Account activation"
+  flash:
+    account_activation_warning: "Account is not activated. Check your email for the \
+    activation link"
+    account_activation_fail: "Invalid activation link."
+    account_activation_success: "Account activated!"
+

@@ -117,6 +117,11 @@ user.update_attribute(:email, "new@email.com")
 # Count
 User.count
 ```
+- `Scope`\
+Scoping allow you to specify commonly-used queries which can be referenced as method
+calls on the association objects or models. With these scopes, you can use every
+method previously covered such as `where`, `joins`, and `includes`.\
+[Reference](https://guides.rubyonrails.org/active_record_querying.html#scopes)
 ## Debug at `html.erb`
 ```erb
  <%= debug(params) if Rails.env.development? %>
@@ -216,3 +221,27 @@ If you want to cach a fragment under certain conditions
 <% end %>
 ```
 [More ref](https://guides.rubyonrails.org/caching_with_rails.html)
+
+## Mailer
+```bash
+rails generate mailer MailerName serviceA serviceB
+```
+`ApplicationMailer < ActionMailer::base`
+- `default()`\
+Set default values for all emails sent fromthis mailer\
+[API ref](https://api.rubyonrails.org/v7.0.5.1/classes/ActionMailer/Base.html#method-c-default)
+```rb
+default from: 'mymail@example.com'
+```
+- `mail()`\
+Creates the actual email message.\
+[API ref](https://api.rubyonrails.org/v7.0.5.1/classes/ActionMailer/Base.html#method-i-mail)
+```rb
+mail(to: "sth@example.com", subject: "Bla bla bla")
+```
+- `deliver_now()`\
+Deliver an email directly.
+- `deliver_later()`\
+Enqueue the email to be delivered through Active Job. When the job runs it will send
+the email using `deliver_now()`\
+[API ref](https://api.rubyonrails.org/v7.0.6/classes/ActionMailer/MessageDelivery.html)
