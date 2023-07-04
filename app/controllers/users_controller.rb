@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :get_user_by_id, only: [:show, :edit, :update]
+  before_action :login_required, only: %i[index edit update destroy]
+  before_action :correct_user, only: %i[edit update]
+  before_action :get_user_by_id, only: %i[show edit update]
 
   def index
-    @pagy, @users = pagy(User.all)
+    @pagy, @users = pagy(User.activated_users)
   end
 
   def new
@@ -12,17 +12,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to root_url unless @user.activated?
   end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
-      reset_session
-      log_in @user
-      # Handle a successful save
-      flash[:success] = "Welcome to the Sample App"
-      redirect_to user_url(@user)
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account"
+      redirect_to root_url
+      # reset_session
+      # log_in @user
+      # # Handle a successful save
+      # flash[:success] = "Welcome to the Sample App"
+      # redirect_to user_url(@user)
     else
       render 'new', status: :unprocessable_entity
     end
