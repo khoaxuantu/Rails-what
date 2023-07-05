@@ -84,6 +84,7 @@ image_tag("rails.svg", alt: "Rails logo", width: "200")
 It will look for `app/views/layouts/_shim.html.erb`
 
 - `form_with`
+[API ref](https://api.rubyonrails.org/v7.0.6/classes/ActionView/Helpers/FormHelper.html#method-i-form_with)
 ```erb
 <%= form_with(model: @user) do |f| %>
 <% end %>

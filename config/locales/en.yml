@@ -37,9 +37,14 @@ en:
   user_mailer:
     subject:
       account_activation: "Account activation"
+      reset_password: "Password reset"
   flash:
     account_activation_warning: "Account is not activated. Check your email for the \
     activation link"
     account_activation_fail: "Invalid activation link."
     account_activation_success: "Account activated!"
+    password_reset_email_sent: "Email sent with password reset instructions."
+    email_not_found: "Email address not found."
+    password_reset_expired: "Password reset has expired."
+    password_reset_success: "Password has been reset."
 
