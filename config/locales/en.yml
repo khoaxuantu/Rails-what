@@ -32,6 +32,7 @@
 en:
   hello: "Hello world"
   baseTitle: "Ruby on Rails Tutorial Sample App"
+  login_required: "Login required."
   form:
     invalid_authenticate_msg: 'Invalid email/password combination'
   user_mailer:
@@ -47,4 +48,8 @@ en:
     email_not_found: "Email address not found."
     password_reset_expired: "Password reset has expired."
     password_reset_success: "Password has been reset."
-
+  micropost:
+    create_successful: "Micropost created."
+    delete_successful: "Micropost deleted."
+    image_type_validate: "must be a valid image format"
+    image_size_validate: "should be less than 5MB"

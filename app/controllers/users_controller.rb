@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_url unless @user.activated?
+    @pagy, @microposts = pagy(@user.microposts.latest)
+    return redirect_to root_url unless @user.activated?
   end
 
   def create
@@ -54,13 +55,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
-  end
-
-  def login_required
-    unless logged_in?
-      flash[:danger] = "Login required."
-      redirect_to login_url, status: :unauthorized
-    end
   end
 
   def correct_user

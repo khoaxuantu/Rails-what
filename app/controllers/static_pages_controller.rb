@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
     if (logged_in?)
-      @user = User.find_by(id: session[:user_id])
+      @user = current_user
+      @micropost = current_user.microposts.build
+      @pagy, @feed_items = pagy(current_user.feed)
     end
   end
 
