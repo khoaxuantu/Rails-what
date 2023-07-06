@@ -45,9 +45,16 @@ get '/name', to: 'controller#action'
 resource :controller
 resources :controller
 ```
-```
+```rb
 redirect_to name_url
 redirect_to dynamic_url(:dynamicParams)
+
+# Redirect to the referrer page
+if request.referrer.nil?
+  redirect_to root_url
+else
+  redirect_to request.referrer
+end
 ```
 
 ## Testing
@@ -123,6 +130,17 @@ Scoping allow you to specify commonly-used queries which can be referenced as me
 calls on the association objects or models. With these scopes, you can use every
 method previously covered such as `where`, `joins`, and `includes`.\
 [Reference](https://guides.rubyonrails.org/active_record_querying.html#scopes)
+
+### Active Record Associations
+- `belongs_to`, `has_many`: Chapter 13
+
+[Reference](https://guides.rubyonrails.org/association_basics.html)
+
+### Model scope
+`default_scopes`
+
+[Reference](https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/)
+
 ## Debug at `html.erb`
 ```erb
  <%= debug(params) if Rails.env.development? %>
@@ -246,3 +264,16 @@ Deliver an email directly.
 Enqueue the email to be delivered through Active Job. When the job runs it will send
 the email using `deliver_now()`\
 [API ref](https://api.rubyonrails.org/v7.0.6/classes/ActionMailer/MessageDelivery.html)
+
+## Active storage
+- For media storage...
+
+[Reference](https://edgeguides.rubyonrails.org/active_storage_overview.html)\
+[Blog: Using active storage in rails](https://pragmaticstudio.com/tutorials/using-active-storage-in-rails)
+
+For models:
+- `has_one_attached`: Associate an uploaded file with a given model
+- `has_many_attached`: Associate many updloaded files with a given model
+
+For controllers:
+- `attach`
