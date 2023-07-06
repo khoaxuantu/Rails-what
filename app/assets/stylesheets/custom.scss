@@ -150,6 +150,8 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+  object-fit: contain;
+  aspect-ratio: 1;
 }
 
 .gravatar_edit {

@@ -14,6 +14,11 @@
     <%= f.label :password_confirmation, "Confirmation" %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+    <div class="image">
+        <%= f.label :avatar, "Avatar" %>
+        <%= f.file_field :avatar %>
+    </div>
+
     <%= f.submit submit_text(yield(:text)), class: "btn btn-primary" %>
 
 <% end %>

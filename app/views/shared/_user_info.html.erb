@@ -1,6 +1,6 @@
 <%= link_to gravatar_for(current_user, size: Settings.user_model.avatar_size), current_user %>
 <h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
+<span><%= link_to t('action.view_my_profile'), current_user %></span>
 <span>
     <%= pluralize(current_user.microposts.count, "micropost") %>
 </span>

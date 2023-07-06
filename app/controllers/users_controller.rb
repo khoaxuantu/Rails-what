@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.avatar.attach(params[:user][:avatar]) unless params[:user][:avatar].nil?
 
     if @user.save
       @user.send_activation_email
@@ -71,7 +72,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-      :password_confirmation)
+      :password_confirmation, :avatar)
   end
 
 end

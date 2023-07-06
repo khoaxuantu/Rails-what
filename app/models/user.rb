@@ -26,6 +26,11 @@ class User < ApplicationRecord
     allow_nil: true
   )
 
+  has_one_attached :avatar do |attachable|
+    attachable.variant :display,
+      resize_to_limit: [Settings.user_model.max_avatar_size, Settings.user_model.max_avatar_size]
+  end
+
   has_secure_password
 
   def remember
