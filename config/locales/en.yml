@@ -45,11 +45,32 @@ en:
     account_activation_fail: "Invalid activation link."
     account_activation_success: "Account activated!"
     password_reset_email_sent: "Email sent with password reset instructions."
+    email_activation: "Please check your email to activate your account"
     email_not_found: "Email address not found."
     password_reset_expired: "Password reset has expired."
     password_reset_success: "Password has been reset."
+    profile_updated: "Profile updated."
+    user_deleted: "User deleted."
   micropost:
+    plural: "Microposts"
     create_successful: "Micropost created."
     delete_successful: "Micropost deleted."
     image_type_validate: "must be a valid image format"
     image_size_validate: "should be less than 5MB"
+  relationships:
+    following: "Following"
+    followers: "Followers"
+  heading:
+    welcome: "Welcome to the Sample App"
+    micropost_feed: "Micropost Feed"
+  action:
+    login_as: "Logged in as"
+    signup_now: "Sign up now!"
+    follow: "Follow"
+    unfollow: "Unfollow"
+    view_my_profile: "View my profile"
+  description:
+    intro: "This is the homepage for the \
+    <a href=\"https://www.railstutorial.org/\">
+      Ruby on Rails Tutorial
+    </a> sample application."

@@ -277,3 +277,14 @@ For models:
 
 For controllers:
 - `attach`
+
+## Turbo
+[Reference](https://www.hotrails.dev/turbo-rails)\
+[Github](https://github.com/hotwired/turbo-rails)
+
+- `respond_to`
+- ```erb
+  <%= turbo_stream.update "html-id" do %>
+    <%= do_something %>
+  <% end %>
+  ```
