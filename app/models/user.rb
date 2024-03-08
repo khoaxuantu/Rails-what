@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many(:passive_relationships, class_name: Relationship.name,
     foreign_key: :followed_id, dependent: :destroy)
   has_many(:followers, through: :passive_relationships, source: :follower)
+  has_many :item_submits
+  has_many :item_uploads
+  has_many :items
 
   before_create :create_activation_method
   before_save :downcase_email
